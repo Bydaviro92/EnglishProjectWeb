@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NextGen Hardware Solutions – PC Components Catalog</title>
+  <meta name="description" content="Shop premium PC hardware at NextGen Hardware Solutions. CPUs, SSDs, monitors, keyboards, motherboards and RAM from the world's top brands."/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet"/>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans:    ['Inter','sans-serif'],
+            display: ['Orbitron','sans-serif'],
+          },
+          colors: {
+            g: {
+              50:  '#f0fdf4', 100: '#dcfce7', 200: '#bbf7d0',
+              300: '#86efac', 400: '#4ade80', 500: '#22c55e',
+              600: '#16a34a', 700: '#15803d', 800: '#166534',
+              900: '#14532d', 950: '#052e16',
+            },
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    /* ── BG grid ── */
+    body{
+      background-color:#020804;
+      background-image:
+        linear-gradient(rgba(34,197,94,.04) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(34,197,94,.04) 1px,transparent 1px);
+      background-size:40px 40px;
+    }
+
+    /* ── Glow text ── */
+    .glow{text-shadow:0 0 18px rgba(34,197,94,.7),0 0 35px rgba(34,197,94,.35)}
+
+    /* ── Navbar ── */
+    .navbar{
+      background:rgba(2,8,4,.88);
+      backdrop-filter:blur(18px);
+      border-bottom:1px solid rgba(34,197,94,.15);
+    }
+
+    /* ── Cards ── */
+    .card{
+      background:linear-gradient(145deg,rgba(5,18,8,.97) 0%,rgba(3,12,5,.99) 100%);
+      border:1px solid rgba(34,197,94,.18);
+      backdrop-filter:blur(12px);
+      transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;
+      animation:fadeUp .6s ease both;
+    }
+    .card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 20px 50px -10px rgba(34,197,94,.28),0 0 0 1px rgba(34,197,94,.35);
+      border-color:rgba(34,197,94,.5);
+    }
+
+    /* ── Product image ── */
+    .product-img{
+      background:linear-gradient(135deg,#020c04 0%,#061208 50%,#040e06 100%);
+      position:relative;overflow:hidden;
+    }
+    .product-img img{
+      width:100%;height:100%;
+      object-fit:contain;
+      object-position:center;
+      padding:12px;
+      transition:transform .4s ease;
+    }
+    .card:hover .product-img img{transform:scale(1.05)}
+    .icon-wrap{position:relative;z-index:1}
+
+    /* ── Buttons ── */
+    .btn-cart-buy{
+      background:linear-gradient(135deg,#15803d 0%,#22c55e 100%);
+      transition:background .25s,box-shadow .25s,transform .15s;
+    }
+    .btn-cart-buy:hover{
+      background:linear-gradient(135deg,#16a34a 0%,#4ade80 100%);
+      box-shadow:0 0 20px rgba(34,197,94,.55);
+      transform:translateY(-1px);
+    }
+    .btn-cart-buy:active{transform:translateY(0)}
+
+    .btn-pdf{
+      background:transparent;
+      border:1px solid rgba(34,197,94,.4);
+      transition:background .25s,border-color .25s,transform .15s;
+    }
+    .btn-pdf:hover{
+      background:rgba(34,197,94,.1);
+      border-color:rgba(34,197,94,.8);
+      transform:translateY(-1px);
+    }
+    .btn-pdf:active{transform:translateY(0)}
+
+    /* ── Badge stock ── */
+    .badge-stock{
+      background:linear-gradient(90deg,rgba(34,197,94,.15),rgba(34,197,94,.05));
+      border:1px solid rgba(34,197,94,.35);
+    }
+
+    /* ── Cart panel ── */
+    #cart-overlay{
+      background:rgba(0,0,0,.7);
+      backdrop-filter:blur(4px);
+    }
+    #cart-panel{
+      background:linear-gradient(180deg,#030f05 0%,#020804 100%);
+      border-left:1px solid rgba(34,197,94,.2);
+      box-shadow:-20px 0 60px rgba(0,0,0,.6);
+    }
+
+    /* ── FAQ accordion ── */
+    .faq-content{
+      max-height:0;overflow:hidden;
+      transition:max-height .35s ease,padding .35s ease;
+    }
+    .faq-content.open{max-height:300px}
+    .faq-icon{transition:transform .3s ease}
+    .faq-item.open .faq-icon{transform:rotate(45deg)}
+
+    /* ── Animations ── */
+    @keyframes fadeUp{
+      from{opacity:0;transform:translateY(24px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+    @keyframes shimmer{
+      from{background-position:-200% 0}
+      to{background-position:200% 0}
+    }
+    @keyframes slideIn{
+      from{transform:translateX(100%)}
+      to{transform:translateX(0)}
+    }
+    @keyframes pulseGlow{
+      0%,100%{box-shadow:0 0 8px rgba(34,197,94,.4)}
+      50%{box-shadow:0 0 22px 4px rgba(34,197,94,.7)}
+    }
+
+    .cart-panel-open{animation:slideIn .3s ease both}
+
+    /* stagger cards */
+    .card:nth-child(1){animation-delay:.05s}
+    .card:nth-child(2){animation-delay:.12s}
+    .card:nth-child(3){animation-delay:.19s}
+    .card:nth-child(4){animation-delay:.26s}
+    .card:nth-child(5){animation-delay:.33s}
+    .card:nth-child(6){animation-delay:.40s}
+
+    /* relative pronouns */
+    strong.rp{color:#4ade80;font-weight:700}
+
+    /* scrollbar */
+    ::-webkit-scrollbar{width:5px}
+    ::-webkit-scrollbar-track{background:#020804}
+    ::-webkit-scrollbar-thumb{background:#15803d;border-radius:3px}
+    ::-webkit-scrollbar-thumb:hover{background:#22c55e}
+
+    /* toast */
+    #toast{transition:all .3s ease}
+
+    /* section divider */
+    .sec-divider{
+      height:1px;
+      background:linear-gradient(90deg,transparent,rgba(34,197,94,.3),transparent);
+    }
+  </style>
+</head>
+<body class="text-slate-200 font-sans antialiased min-h-screen">
+
+<!-- ════════════════════════════════════════════
+     NAVBAR
+════════════════════════════════════════════ -->
+<header class="navbar sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+
+    <!-- Logo -->
+    <a href="#" id="nav-logo" class="flex items-center gap-3 group">
+      <div class="relative w-9 h-9 flex items-center justify-center">
+        <div class="absolute inset-0 rounded-lg bg-g-500/20 group-hover:bg-g-500/30 transition-colors duration-300" style="animation:pulseGlow 2.5s ease-in-out infinite"></div>
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-g-400 relative z-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/>
+        </svg>
+      </div>
+      <span class="font-display text-sm sm:text-base font-bold tracking-wider text-white glow">NextGen<span class="text-g-400">HW</span></span>
+    </a>
+
+    <!-- Nav -->
+    <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-400">
+      <a href="#catalog"  id="nav-catalog"  class="hover:text-g-400 transition-colors">Catalog</a>
+      <a href="#support"  id="nav-support"  class="hover:text-g-400 transition-colors">Support</a>
+      <a href="#faq"      id="nav-faq"      class="hover:text-g-400 transition-colors">FAQ</a>
+    </nav>
+
+    <!-- Cart icon -->
+    <button id="btn-open-cart" aria-label="Open cart" class="relative p-2 rounded-lg text-slate-400 hover:text-g-400 hover:bg-g-500/10 transition-all duration-200">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.3 7M17 13l2.3 7M9 21a1 1 0 100-2 1 1 0 000 2zm8 0a1 1 0 100-2 1 1 0 000 2z"/>
+      </svg>
+      <span id="cart-badge" class="absolute -top-0.5 -right-0.5 bg-g-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center transition-transform duration-200">0</span>
+    </button>
+  </div>
+</header>
+
+
+<!-- ════════════════════════════════════════════
+     CART OVERLAY + PANEL
+════════════════════════════════════════════ -->
+<div id="cart-overlay" class="fixed inset-0 z-40 hidden" onclick="closeCart()"></div>
+
+<aside id="cart-panel" class="fixed top-0 right-0 h-full w-full sm:w-96 z-50 flex flex-col translate-x-full transition-transform duration-300">
+  <!-- Header -->
+  <div class="flex items-center justify-between px-5 py-4 border-b border-g-900/60">
+    <div class="flex items-center gap-2">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-g-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.3 7M17 13l2.3 7M9 21a1 1 0 100-2 1 1 0 000 2zm8 0a1 1 0 100-2 1 1 0 000 2z"/>
+      </svg>
+      <h2 class="font-bold text-white text-base">Your Cart</h2>
+      <span id="cart-count-text" class="text-xs text-slate-500 font-medium">(0 items)</span>
+    </div>
+    <button onclick="closeCart()" id="btn-close-cart" class="p-1.5 rounded-lg text-slate-500 hover:text-white hover:bg-slate-800 transition-colors" aria-label="Close cart">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Items -->
+  <div id="cart-items" class="flex-1 overflow-y-auto px-5 py-4 space-y-3">
+    <!-- populated by JS -->
+  </div>
+
+  <!-- Empty state -->
+  <div id="cart-empty" class="flex flex-col items-center justify-center flex-1 gap-4 text-center px-6 hidden">
+    <div class="w-16 h-16 rounded-full bg-g-950 border border-g-900/50 flex items-center justify-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-g-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.3 7M17 13l2.3 7M9 21a1 1 0 100-2 1 1 0 000 2zm8 0a1 1 0 100-2 1 1 0 000 2z"/>
+      </svg>
+    </div>
+    <p class="text-slate-500 text-sm">Your cart is empty.<br/>Add some hardware!</p>
+    <button onclick="closeCart()" class="text-g-400 text-sm font-semibold hover:text-g-300 transition-colors">← Continue shopping</button>
+  </div>
+
+  <!-- Footer totals -->
+  <div id="cart-footer" class="border-t border-g-900/60 px-5 py-4 space-y-3 hidden">
+    <div class="flex justify-between text-sm text-slate-400">
+      <span>Subtotal</span>
+      <span id="cart-subtotal" class="text-white font-semibold">$0.00</span>
+    </div>
+    <div class="flex justify-between text-sm text-slate-400">
+      <span>Shipping</span>
+      <span class="text-g-400 font-semibold">FREE</span>
+    </div>
+    <div class="sec-divider"></div>
+    <div class="flex justify-between text-base font-bold">
+      <span class="text-white">Total</span>
+      <span id="cart-total" class="text-g-400 glow">$0.00</span>
+    </div>
+    <button id="btn-checkout" onclick="goCheckout()" class="btn-cart-buy w-full flex items-center justify-center gap-2 py-3 rounded-xl text-white font-semibold text-sm mt-1">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+      </svg>
+      Proceed to Checkout
+    </button>
+    <button onclick="clearCart()" id="btn-clear-cart" class="w-full text-xs text-slate-600 hover:text-red-400 transition-colors py-1">Clear all items</button>
+  </div>
+</aside>
+
+
+<!-- ════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════ -->
+<section class="relative overflow-hidden py-16 sm:py-24">
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full" style="background:radial-gradient(ellipse,rgba(34,197,94,.07) 0%,transparent 70%)"></div>
+  </div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+    <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-g-500/10 border border-g-500/30 text-g-400 mb-5 tracking-widest uppercase">
+      <span class="w-1.5 h-1.5 rounded-full bg-g-400 animate-pulse"></span>
+      2026 Next-Gen Lineup
+    </span>
+    <h1 class="font-display text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-5 glow">
+      Build Your <span class="text-g-400">Ultimate</span><br class="hidden sm:block"/> PC
+    </h1>
+    <p class="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
+      Premium components from AMD, Samsung, ASUS, Alienware, Corsair and more — all in one place.
+    </p>
+    <a href="#catalog" id="hero-cta" class="btn-cart-buy inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-white font-semibold shadow-lg text-sm">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+      </svg>
+      Browse Catalog
+    </a>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     CATALOG
+════════════════════════════════════════════ -->
+<main id="catalog" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+  <!-- Header + filters -->
+  <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
+    <div>
+      <h2 class="text-2xl sm:text-3xl font-bold text-white">Featured Components</h2>
+      <p class="text-slate-500 text-sm mt-1">6 products &nbsp;·&nbsp; All in stock</p>
+    </div>
+    <div class="flex flex-wrap gap-2 text-xs font-medium" id="filter-bar">
+      <button data-filter="all"         class="filter-btn active px-3 py-1.5 rounded-full bg-g-500/20 border border-g-500/50 text-g-400">All</button>
+      <button data-filter="cpu"         class="filter-btn px-3 py-1.5 rounded-full bg-slate-900 border border-slate-700 text-slate-400 hover:border-g-500/40 hover:text-g-300 transition-all">CPU</button>
+      <button data-filter="ssd"         class="filter-btn px-3 py-1.5 rounded-full bg-slate-900 border border-slate-700 text-slate-400 hover:border-g-500/40 hover:text-g-300 transition-all">SSD</button>
+      <button data-filter="keyboard"    class="filter-btn px-3 py-1.5 rounded-full bg-slate-900 border border-slate-700 text-slate-400 hover:border-g-500/40 hover:text-g-300 transition-all">Keyboard</button>
+      <button data-filter="monitor"     class="filter-btn px-3 py-1.5 rounded-full bg-slate-900 border border-slate-700 text-slate-400 hover:border-g-500/40 hover:text-g-300 transition-all">Monitor</button>
+      <button data-filter="motherboard" class="filter-btn px-3 py-1.5 rounded-full bg-slate-900 border border-slate-700 text-slate-400 hover:border-g-500/40 hover:text-g-300 transition-all">Motherboard</button>
+      <button data-filter="ram"         class="filter-btn px-3 py-1.5 rounded-full bg-slate-900 border border-slate-700 text-slate-400 hover:border-g-500/40 hover:text-g-300 transition-all">RAM</button>
+    </div>
+  </div>
+
+  <!-- Grid -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6" id="product-grid">
+
+    <!-- ── CARD 1 · AMD Ryzen 7 7800X3D ── -->
+    <article class="card rounded-2xl overflow-hidden flex flex-col" data-category="cpu" id="card-cpu">
+      <div class="product-img h-52">
+        <img src="img/cpu-ryzen.jpg" alt="AMD Ryzen 7 7800X3D processor box" loading="lazy"/>
+      </div>
+      <div class="flex flex-col flex-1 p-5 gap-4">
+        <div class="flex items-center justify-between gap-2 flex-wrap">
+          <span class="text-xs font-semibold text-slate-500 tracking-wide uppercase">Processing Devices (CPU)</span>
+          <span class="badge-stock text-[11px] font-semibold text-g-400 px-2 py-0.5 rounded-full flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-g-400 animate-pulse"></span> In Stock
+          </span>
+        </div>
+        <h3 class="text-lg font-bold text-white leading-tight">AMD Ryzen 7 7800X3D</h3>
+        <p class="text-2xl font-black text-g-400">$399.99</p>
+        <div class="border-t border-slate-800/80 pt-4">
+          <p class="text-xs font-semibold text-slate-600 uppercase tracking-widest mb-2">Technical Overview</p>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            This is a high-performance gaming processor <strong class="rp">which</strong> features 3D V-Cache technology. It installs in an AM5 socket <strong class="rp">where</strong> the CPU communicates with ultra-fast DDR5 memory. It is the perfect choice for hardcore gamers <strong class="rp">who</strong> demand maximum framerates in competitive titles.
+          </p>
+        </div>
+        <div class="mt-auto flex flex-col sm:flex-row gap-2 pt-2">
+          <button id="btn-cart-cpu" onclick="addToCart('AMD Ryzen 7 7800X3D',399.99)" class="btn-cart-buy flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-white text-sm font-semibold">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.3 7M17 13l2.3 7M9 21a1 1 0 100-2 1 1 0 000 2zm8 0a1 1 0 100-2 1 1 0 000 2z"/></svg>
+            Add to Cart
+          </button>
+          <button id="btn-pdf-cpu" class="btn-pdf flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-g-400 text-sm font-semibold">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 21h10a2 2 0 002-2V9l-5-6H7a2 2 0 00-2 2v14a2 2 0 002 2z"/><path d="M14 3v6h5M10 12v4m0 0l-2-2m2 2l2-2"/></svg>
+            Technical Datasheet (PDF)
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <!-- ── CARD 2 · Samsung 990 PRO 2TB ── -->
+    <article class="card rounded-2xl overflow-hidden flex flex-col" data-category="ssd" id="card-ssd">
+      <div class="product-img h-52">
+        <img src="img/ssd-samsung.jpg" alt="Samsung 990 PRO 2TB NVMe SSD" loading="lazy"/>
+      </div>
+      <div class="flex flex-col flex-1 p-5 gap-4">
+        <div class="flex items-center justify-between gap-2 flex-wrap">
+          <span class="text-xs font-semibold text-slate-500 tracking-wide uppercase">Storage Devices (SSD)</span>
+          <span class="badge-stock text-[11px] font-semibold text-g-400 px-2 py-0.5 rounded-full flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-g-400 animate-pulse"></span> In Stock
+          </span>
+        </div>
+        <h3 class="text-lg font-bold text-white leading-tight">Samsung 990 PRO 2TB NVMe SSD</h3>
+        <p class="text-2xl font-black text-g-400">$169.99</p>
+        <div class="border-t border-slate-800/80 pt-4">
+          <p class="text-xs font-semibold text-slate-600 uppercase tracking-widest mb-2">Technical Overview</p>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            An ultra-fast solid-state drive <strong class="rp">that</strong> reaches read speeds up to 7,450 MB/s. It connects to the M.2 slot <strong class="rp">where</strong> PCIe 4.0 lanes provide massive bandwidth. Designed for professionals <strong class="rp">whose</strong> daily workflows require rapid access to enormous 4K video files.
+          </p>
+        </div>
+        <div class="mt-auto flex flex-col sm:flex-row gap-2 pt-2">
+          <button id="btn-cart-ssd" onclick="addToCart('Samsung 990 PRO 2TB NVMe SSD',169.99)" class="btn-cart-buy flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-white text-sm font-semibold">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.3 7M17 13l2.3 7M9 21a1 1 0 100-2 1 1 0 000 2zm8 0a1 1 0 100-2 1 1 0 000 2z"/></svg>
+            Add to Cart
+          </button>
+          <button id="btn-pdf-ssd" class="btn-pdf flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-g-400 text-sm font-semibold">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 21h10a2 2 0 002-2V9l-5-6H7a2 2 0 00-2 2v14a2 2 0 002 2z"/><path d="M14 3v6h5M10 12v4m0 0l-2-2m2 2l2-2"/></svg>
+            Technical Datasheet (PDF)
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <!-- ── CARD 3 · Keychron Q1 Pro ── -->
+    <article class="card rounded-2xl overflow-hidden flex flex-col" data-category="keyboard" id="card-keyboard">
+      <div class="product-img h-52">
+        <img src="img/keyboard-keychron.jpg" alt="Keychron Q1 Pro Mechanical Keyboard" loading="lazy"/>
+      </div>
+      <div class="flex flex-col flex-1 p-5 gap-4">
+        <div class="flex items-center justify-between gap-2 flex-wrap">
+          <span class="text-xs font-semibold text-slate-500 tracking-wide uppercase">Input Devices (Keyboard)</span>
+          <span class="badge-stock text-[11px] font-semibold text-g-400 px-2 py-0.5 rounded-full flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-g-400 animate-pulse"></span> In Stock
+          </span>
+        </div>
+        <h3 class="text-lg font-bold text-white leading-tight">Keychron Q1 Pro Mechanical Keyboard</h3>
+        <p class="text-2xl font-black text-g-400">$199.00</p>
+        <div class="border-t border-slate-800/80 pt-4">
+          <p class="text-xs font-semibold text-slate-600 uppercase tracking-widest mb-2">Technical Overview</p>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            A premium wireless mechanical keyboard <strong class="rp">which</strong> offers a fully customizable aluminum chassis. It thrives on minimalist desks <strong class="rp">where</strong> Bluetooth connectivity reduces cable clutter. It is ideal for developers and typists <strong class="rp">who</strong> spend long hours coding.
+          </p>
+        </div>
+        <div class="mt-auto flex flex-col sm:flex-row gap-2 pt-2">
+          <button id="btn-cart-keyboard" onclick="addToCart('Keychron Q1 Pro Mechanical Keyboard',199.00)" class="btn-cart-buy flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-white text-sm font-semibold">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.3 7M17 13l2.3 7M9 21a1 1 0 100-2 1 1 0 000 2zm8 0a1 1 0 100-2 1 1 0 000 2z"/></svg>
+            Add to Cart
+          </button>
+          <button id="btn-pdf-keyboard" class="btn-pdf flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-g-400 text-sm font-semibold">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 21h10a2 2 0 002-2V9l-5-6H7a2 2 0 00-2 2v14a2 2 0 002 2z"/><path d="M14 3v6h5M10 12v4m0 0l-2-2m2 2l2-2"/></svg>
+            Technical Datasheet (PDF)
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <!-- ── CARD 4 · Monitor ultrawide ── -->
+    <article class="card rounded-2xl overflow-hidden flex flex-col" data-category="monitor" id="card-monitor">
+      <div class="product-img h-52">
+        <img src="img/monitor-ultrawide.jpg" alt="Alienware 34 QD-OLED Gaming Monitor" loading="lazy"/>
+      </div>
+      <div class="flex flex-col flex-1 p-5 gap-4">
+        <div class="flex items-center justify-between gap-2 flex-wrap">
+          <span class="text-xs font-semibold text-slate-500 tracking-wide uppercase">Output Devices (Monitor)</span>
+          <span class="badge-stock text-[11px] font-semibold text-g-400 px-2 py-0.5 rounded-full flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-g-400 animate-pulse"></span> In Stock
+          </span>
+        </div>
+        <h3 class="text-lg font-bold text-white leading-tight">Alienware 34 QD-OLED Gaming Monitor</h3>
+        <p class="text-2xl font-black text-g-400">$999.99</p>
+        <div class="border-t border-slate-800/80 pt-4">
+          <p class="text-xs font-semibold text-slate-600 uppercase tracking-widest mb-2">Technical Overview</p>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            A stunning ultrawide display <strong class="rp">that</strong> delivers infinite contrast and vibrant colors. It belongs on a premium setup <strong class="rp">where</strong> immersive visuals are critical. Built for enthusiasts <strong class="rp">whose</strong> setups are designed for the ultimate cinematic gaming experience.
+          </p>
+        </div>
+        <div class="mt-auto flex flex-col sm:flex-row gap-2 pt-2">
+          <button id="btn-cart-monitor" onclick="addToCart('Alienware 34 QD-OLED Gaming Monitor',999.99)" class="btn-cart-buy flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-white text-sm font-semibold">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.3 7M17 13l2.3 7M9 21a1 1 0 100-2 1 1 0 000 2zm8 0a1 1 0 100-2 1 1 0 000 2z"/></svg>
+            Add to Cart
+          </button>
+          <button id="btn-pdf-monitor" class="btn-pdf flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-g-400 text-sm font-semibold">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 21h10a2 2 0 002-2V9l-5-6H7a2 2 0 00-2 2v14a2 2 0 002 2z"/><path d="M14 3v6h5M10 12v4m0 0l-2-2m2 2l2-2"/></svg>
+            Technical Datasheet (PDF)
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <!-- ── CARD 5 · ASUS ROG Strix B650E-F ── -->
+    <article class="card rounded-2xl overflow-hidden flex flex-col" data-category="motherboard" id="card-mobo">
+      <div class="product-img h-52">
+        <img src="img/mobo-asus.jpg" alt="ASUS ROG Strix B650E-F Gaming WiFi Motherboard" loading="lazy"/>
+      </div>
+      <div class="flex flex-col flex-1 p-5 gap-4">
+        <div class="flex items-center justify-between gap-2 flex-wrap">
+          <span class="text-xs font-semibold text-slate-500 tracking-wide uppercase">Infrastructure (Motherboard)</span>
+          <span class="badge-stock text-[11px] font-semibold text-g-400 px-2 py-0.5 rounded-full flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-g-400 animate-pulse"></span> In Stock
+          </span>
+        </div>
+        <h3 class="text-lg font-bold text-white leading-tight">ASUS ROG Strix B650E-F Gaming WiFi</h3>
+        <p class="text-2xl font-black text-g-400">$259.99</p>
+        <div class="border-t border-slate-800/80 pt-4">
+          <p class="text-xs font-semibold text-slate-600 uppercase tracking-widest mb-2">Technical Overview</p>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            A robust ATX motherboard <strong class="rp">which</strong> provides a stable foundation for the latest Ryzen CPUs. It acts as the central hub <strong class="rp">where</strong> all your high-end PC components connect and synchronize. Engineered for PC builders <strong class="rp">who</strong> want reliable power delivery and advanced thermal management.
+          </p>
+        </div>
+        <div class="mt-auto flex flex-col sm:flex-row gap-2 pt-2">
+          <button id="btn-cart-mobo" onclick="addToCart('ASUS ROG Strix B650E-F Gaming WiFi',259.99)" class="btn-cart-buy flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-white text-sm font-semibold">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.3 7M17 13l2.3 7M9 21a1 1 0 100-2 1 1 0 000 2zm8 0a1 1 0 100-2 1 1 0 000 2z"/></svg>
+            Add to Cart
+          </button>
+          <button id="btn-pdf-mobo" class="btn-pdf flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-g-400 text-sm font-semibold">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 21h10a2 2 0 002-2V9l-5-6H7a2 2 0 00-2 2v14a2 2 0 002 2z"/><path d="M14 3v6h5M10 12v4m0 0l-2-2m2 2l2-2"/></svg>
+            Technical Datasheet (PDF)
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <!-- ── CARD 6 · Corsair Dominator RGB 64GB ── -->
+    <article class="card rounded-2xl overflow-hidden flex flex-col" data-category="ram" id="card-ram">
+      <div class="product-img h-52">
+        <img src="img/ram-corsair.jpg" alt="Corsair Dominator Platinum RGB 64GB DDR5" loading="lazy"/>
+      </div>
+      <div class="flex flex-col flex-1 p-5 gap-4">
+        <div class="flex items-center justify-between gap-2 flex-wrap">
+          <span class="text-xs font-semibold text-slate-500 tracking-wide uppercase">Expansion Component (RAM)</span>
+          <span class="badge-stock text-[11px] font-semibold text-g-400 px-2 py-0.5 rounded-full flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-g-400 animate-pulse"></span> In Stock
+          </span>
+        </div>
+        <h3 class="text-lg font-bold text-white leading-tight">Corsair Dominator Platinum RGB 64GB DDR5</h3>
+        <p class="text-2xl font-black text-g-400">$229.99</p>
+        <div class="border-t border-slate-800/80 pt-4">
+          <p class="text-xs font-semibold text-slate-600 uppercase tracking-widest mb-2">Technical Overview</p>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            A high-capacity memory kit <strong class="rp">that</strong> operates at a blazing 6000MHz. It slots directly into the DIMM channels <strong class="rp">where</strong> it ensures smooth multitasking. Perfect for content creators <strong class="rp">who</strong> run heavy rendering software simultaneously.
+          </p>
+        </div>
+        <div class="mt-auto flex flex-col sm:flex-row gap-2 pt-2">
+          <button id="btn-cart-ram" onclick="addToCart('Corsair Dominator Platinum RGB 64GB DDR5',229.99)" class="btn-cart-buy flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-white text-sm font-semibold">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.3 7M17 13l2.3 7M9 21a1 1 0 100-2 1 1 0 000 2zm8 0a1 1 0 100-2 1 1 0 000 2z"/></svg>
+            Add to Cart
+          </button>
+          <button id="btn-pdf-ram" class="btn-pdf flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-g-400 text-sm font-semibold">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 21h10a2 2 0 002-2V9l-5-6H7a2 2 0 00-2 2v14a2 2 0 002 2z"/><path d="M14 3v6h5M10 12v4m0 0l-2-2m2 2l2-2"/></svg>
+            Technical Datasheet (PDF)
+          </button>
+        </div>
+      </div>
+    </article>
+
+  </div><!-- /product-grid -->
+</main>
+
+
+<!-- ════════════════════════════════════════════
+     SUPPORT & FAQ SECTION
+════════════════════════════════════════════ -->
+<section id="support" class="mt-8 py-16 relative">
+  <!-- Top divider -->
+  <div class="sec-divider mb-16"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Section header -->
+    <div class="text-center mb-14">
+      <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-g-500/10 border border-g-500/30 text-g-400 mb-4 tracking-widest uppercase">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+        Customer Support
+      </span>
+      <h2 class="text-3xl sm:text-4xl font-bold text-white mb-3">How can we <span class="text-g-400 glow">help you?</span></h2>
+      <p class="text-slate-400 text-base max-w-xl mx-auto">Our expert team is here 24/7 to assist you with orders, compatibility questions, and technical support.</p>
+    </div>
+
+    <!-- Support cards row -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-16">
+      <!-- Card: Live Chat -->
+      <div class="rounded-2xl p-6 flex flex-col items-center text-center gap-3 border border-g-900/50 bg-gradient-to-b from-[#050f07] to-[#020804] hover:border-g-700/60 transition-colors duration-300 group">
+        <div class="w-12 h-12 rounded-xl bg-g-500/10 border border-g-500/20 flex items-center justify-center group-hover:bg-g-500/20 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-g-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+          </svg>
+        </div>
+        <h3 class="font-bold text-white text-base">Live Chat</h3>
+        <p class="text-slate-500 text-sm leading-relaxed">Chat with a hardware specialist in real time.</p>
+        <span class="inline-flex items-center gap-1 text-xs text-g-400 font-semibold"><span class="w-1.5 h-1.5 rounded-full bg-g-400 animate-pulse"></span>Online now</span>
+      </div>
+      <!-- Card: Email -->
+      <div class="rounded-2xl p-6 flex flex-col items-center text-center gap-3 border border-g-900/50 bg-gradient-to-b from-[#050f07] to-[#020804] hover:border-g-700/60 transition-colors duration-300 group">
+        <div class="w-12 h-12 rounded-xl bg-g-500/10 border border-g-500/20 flex items-center justify-center group-hover:bg-g-500/20 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-g-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+        </div>
+        <h3 class="font-bold text-white text-base">Email Support</h3>
+        <p class="text-slate-500 text-sm leading-relaxed">We respond within 4 hours on business days.</p>
+        <span class="text-xs text-slate-500 font-mono">support@nextgenhw.com</span>
+      </div>
+      <!-- Card: Phone -->
+      <div class="rounded-2xl p-6 flex flex-col items-center text-center gap-3 border border-g-900/50 bg-gradient-to-b from-[#050f07] to-[#020804] hover:border-g-700/60 transition-colors duration-300 group">
+        <div class="w-12 h-12 rounded-xl bg-g-500/10 border border-g-500/20 flex items-center justify-center group-hover:bg-g-500/20 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-g-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+          </svg>
+        </div>
+        <h3 class="font-bold text-white text-base">Phone Support</h3>
+        <p class="text-slate-500 text-sm leading-relaxed">Mon–Fri 9:00 AM – 6:00 PM (CET)</p>
+        <span class="text-xs text-slate-500 font-mono">+1 (800) 555-NGHS</span>
+      </div>
+    </div>
+
+    <!-- Two columns: FAQ + Contact Form -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+
+      <!-- ── FAQ ── -->
+      <div id="faq">
+        <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-g-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          Frequently Asked Questions
+        </h3>
+        <div class="space-y-3" id="faq-list">
+
+          <!-- FAQ items -->
+          <div class="faq-item rounded-xl border border-slate-800 overflow-hidden">
+            <button class="faq-trigger w-full flex items-center justify-between px-5 py-4 text-sm font-semibold text-slate-200 hover:text-white hover:bg-g-900/20 transition-colors text-left" id="faq-q1">
+              <span>What is your return policy?</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="faq-icon w-4 h-4 text-g-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+            </button>
+            <div class="faq-content px-5 text-sm text-slate-400 leading-relaxed">
+              <p class="pb-4">We offer a 30-day hassle-free return policy on all products. Items must be returned in their original packaging, unused and undamaged. Refunds are processed within 5–7 business days of receiving the return.</p>
+            </div>
+          </div>
+
+          <div class="faq-item rounded-xl border border-slate-800 overflow-hidden">
+            <button class="faq-trigger w-full flex items-center justify-between px-5 py-4 text-sm font-semibold text-slate-200 hover:text-white hover:bg-g-900/20 transition-colors text-left" id="faq-q2">
+              <span>How long does shipping take?</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="faq-icon w-4 h-4 text-g-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+            </button>
+            <div class="faq-content px-5 text-sm text-slate-400 leading-relaxed">
+              <p class="pb-4">Standard shipping takes 3–5 business days. Express shipping (1–2 days) is available at checkout. All orders over $500 qualify for free express shipping automatically.</p>
+            </div>
+          </div>
+
+          <div class="faq-item rounded-xl border border-slate-800 overflow-hidden">
+            <button class="faq-trigger w-full flex items-center justify-between px-5 py-4 text-sm font-semibold text-slate-200 hover:text-white hover:bg-g-900/20 transition-colors text-left" id="faq-q3">
+              <span>Do you offer compatibility checks?</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="faq-icon w-4 h-4 text-g-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+            </button>
+            <div class="faq-content px-5 text-sm text-slate-400 leading-relaxed">
+              <p class="pb-4">Yes! Our hardware specialists can help ensure all your components are compatible before you buy. Use the live chat or contact form and describe your build — we'll advise you for free.</p>
+            </div>
+          </div>
+
+          <div class="faq-item rounded-xl border border-slate-800 overflow-hidden">
+            <button class="faq-trigger w-full flex items-center justify-between px-5 py-4 text-sm font-semibold text-slate-200 hover:text-white hover:bg-g-900/20 transition-colors text-left" id="faq-q4">
+              <span>What payment methods do you accept?</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="faq-icon w-4 h-4 text-g-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+            </button>
+            <div class="faq-content px-5 text-sm text-slate-400 leading-relaxed">
+              <p class="pb-4">We accept Visa, Mastercard, American Express, PayPal, Apple Pay, Google Pay, and bank transfers. All transactions are secured with 256-bit SSL encryption.</p>
+            </div>
+          </div>
+
+          <div class="faq-item rounded-xl border border-slate-800 overflow-hidden">
+            <button class="faq-trigger w-full flex items-center justify-between px-5 py-4 text-sm font-semibold text-slate-200 hover:text-white hover:bg-g-900/20 transition-colors text-left" id="faq-q5">
+              <span>Is there a warranty on products?</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="faq-icon w-4 h-4 text-g-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+            </button>
+            <div class="faq-content px-5 text-sm text-slate-400 leading-relaxed">
+              <p class="pb-4">All products carry the manufacturer's official warranty. CPUs and motherboards typically have 3-year warranties; SSDs and RAM often come with 5-year or lifetime warranties. Warranty claims are handled directly through us.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── Contact Form ── -->
+      <div>
+        <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-g-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          Send us a Message
+        </h3>
+        <form id="contact-form" onsubmit="submitForm(event)" class="space-y-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="contact-name" class="block text-xs font-semibold text-slate-500 uppercase tracking-widest mb-1.5">Name</label>
+              <input id="contact-name" type="text" placeholder="John Doe" required
+                class="w-full px-4 py-3 rounded-xl bg-[#050f07] border border-slate-800 text-white placeholder-slate-600 text-sm focus:outline-none focus:border-g-500/60 focus:ring-1 focus:ring-g-500/30 transition-colors"/>
+            </div>
+            <div>
+              <label for="contact-email" class="block text-xs font-semibold text-slate-500 uppercase tracking-widest mb-1.5">Email</label>
+              <input id="contact-email" type="email" placeholder="you@example.com" required
+                class="w-full px-4 py-3 rounded-xl bg-[#050f07] border border-slate-800 text-white placeholder-slate-600 text-sm focus:outline-none focus:border-g-500/60 focus:ring-1 focus:ring-g-500/30 transition-colors"/>
+            </div>
+          </div>
+          <div>
+            <label for="contact-subject" class="block text-xs font-semibold text-slate-500 uppercase tracking-widest mb-1.5">Subject</label>
+            <select id="contact-subject"
+              class="w-full px-4 py-3 rounded-xl bg-[#050f07] border border-slate-800 text-sm text-slate-300 focus:outline-none focus:border-g-500/60 focus:ring-1 focus:ring-g-500/30 transition-colors appearance-none">
+              <option value="">Select a topic…</option>
+              <option>Order Status</option>
+              <option>Compatibility Question</option>
+              <option>Return / Refund</option>
+              <option>Technical Support</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div>
+            <label for="contact-msg" class="block text-xs font-semibold text-slate-500 uppercase tracking-widest mb-1.5">Message</label>
+            <textarea id="contact-msg" rows="5" placeholder="Describe your question or issue…" required
+              class="w-full px-4 py-3 rounded-xl bg-[#050f07] border border-slate-800 text-white placeholder-slate-600 text-sm focus:outline-none focus:border-g-500/60 focus:ring-1 focus:ring-g-500/30 transition-colors resize-none"></textarea>
+          </div>
+          <button id="btn-send-form" type="submit" class="btn-cart-buy w-full flex items-center justify-center gap-2 py-3 rounded-xl text-white font-semibold text-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+            Send Message
+          </button>
+          <p id="form-success" class="hidden text-sm text-g-400 text-center font-semibold pt-1">✓ Message sent! We'll get back to you within 4 hours.</p>
+        </form>
+      </div>
+
+    </div><!-- /two-col -->
+  </div><!-- /container -->
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════ -->
+<footer class="mt-16 border-t border-slate-900 bg-[#010402]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 grid grid-cols-1 sm:grid-cols-3 gap-8 text-sm text-slate-500">
+    <div>
+      <p class="font-display font-bold text-white text-base mb-2 glow">NextGen<span class="text-g-400">HW</span></p>
+      <p class="leading-relaxed">Your one-stop destination for next-generation PC hardware. Build faster, render smarter, game harder.</p>
+    </div>
+    <div>
+      <p class="font-semibold text-slate-300 mb-3 uppercase tracking-widest text-xs">Categories</p>
+      <ul class="space-y-2">
+        <li><a href="#" class="hover:text-g-400 transition-colors">CPUs &amp; Processors</a></li>
+        <li><a href="#" class="hover:text-g-400 transition-colors">Storage (SSD/NVMe)</a></li>
+        <li><a href="#" class="hover:text-g-400 transition-colors">Memory (RAM)</a></li>
+        <li><a href="#" class="hover:text-g-400 transition-colors">Motherboards</a></li>
+        <li><a href="#" class="hover:text-g-400 transition-colors">Monitors &amp; Displays</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="font-semibold text-slate-300 mb-3 uppercase tracking-widest text-xs">Support</p>
+      <ul class="space-y-2">
+        <li><a href="#support" class="hover:text-g-400 transition-colors">Contact Us</a></li>
+        <li><a href="#faq"     class="hover:text-g-400 transition-colors">FAQ</a></li>
+        <li><a href="#"        class="hover:text-g-400 transition-colors">Shipping &amp; Returns</a></li>
+        <li><a href="#"        class="hover:text-g-400 transition-colors">Warranty</a></li>
+        <li><a href="#"        class="hover:text-g-400 transition-colors">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-slate-900 py-5 text-center text-xs text-slate-700">
+    &copy; 2026 NextGen Hardware Solutions. All rights reserved.
+  </div>
+</footer>
+
+
+<!-- ════════════════════════════════════════════
+     TOAST
+════════════════════════════════════════════ -->
+<div id="toast" class="fixed bottom-6 right-6 z-50 flex items-center gap-3 px-5 py-3 rounded-xl border shadow-2xl text-white text-sm font-medium pointer-events-none max-w-xs translate-y-20 opacity-0" style="background:rgba(3,12,5,.97);border-color:rgba(34,197,94,.35)">
+  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-g-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+  <span id="toast-msg"></span>
+</div>
+
+
+<!-- ════════════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════════════ -->
+<script>
+/* ─── CART STATE ─── */
+let cart = JSON.parse(localStorage.getItem('ngh_cart') || '[]');
+
+function saveCart() {
+  localStorage.setItem('ngh_cart', JSON.stringify(cart));
+}
+
+/* ─── CART UI ─── */
+function openCart() {
+  const overlay = document.getElementById('cart-overlay');
+  const panel   = document.getElementById('cart-panel');
+  overlay.classList.remove('hidden');
+  requestAnimationFrame(() => {
+    panel.style.transform = 'translateX(0)';
+  });
+  renderCartItems();
+}
+
+function closeCart() {
+  const overlay = document.getElementById('cart-overlay');
+  const panel   = document.getElementById('cart-panel');
+  panel.style.transform = 'translateX(100%)';
+  setTimeout(() => overlay.classList.add('hidden'), 300);
+}
+
+document.getElementById('btn-open-cart').addEventListener('click', openCart);
+
+/* ─── ADD TO CART ─── */
+function addToCart(name, price) {
+  const existing = cart.find(i => i.name === name);
+  if (existing) {
+    existing.qty++;
+  } else {
+    cart.push({ name, price, qty: 1 });
+  }
+  saveCart();
+  updateBadge();
+  showToast(`"${name.split(' ').slice(0,3).join(' ')}…" added!`);
+}
+
+/* ─── REMOVE / CHANGE QTY ─── */
+function changeQty(name, delta) {
+  const item = cart.find(i => i.name === name);
+  if (!item) return;
+  item.qty += delta;
+  if (item.qty <= 0) cart = cart.filter(i => i.name !== name);
+  saveCart();
+  updateBadge();
+  renderCartItems();
+}
+
+function removeItem(name) {
+  cart = cart.filter(i => i.name !== name);
+  saveCart();
+  updateBadge();
+  renderCartItems();
+}
+
+function clearCart() {
+  cart = [];
+  saveCart();
+  updateBadge();
+  renderCartItems();
+}
+
+/* ─── RENDER CART ─── */
+function renderCartItems() {
+  const container = document.getElementById('cart-items');
+  const empty     = document.getElementById('cart-empty');
+  const footer    = document.getElementById('cart-footer');
+  const countTxt  = document.getElementById('cart-count-text');
+
+  const totalItems = cart.reduce((a, i) => a + i.qty, 0);
+  const subtotal   = cart.reduce((a, i) => a + i.price * i.qty, 0);
+
+  countTxt.textContent = `(${totalItems} item${totalItems !== 1 ? 's' : ''})`;
+
+  if (cart.length === 0) {
+    container.innerHTML = '';
+    container.classList.add('hidden');
+    empty.classList.remove('hidden');
+    footer.classList.add('hidden');
+    return;
+  }
+
+  container.classList.remove('hidden');
+  empty.classList.add('hidden');
+  footer.classList.remove('hidden');
+
+  container.innerHTML = cart.map(item => `
+    <div class="flex items-start gap-3 p-3 rounded-xl" style="background:rgba(5,15,7,.6);border:1px solid rgba(34,197,94,.1)">
+      <div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0" style="background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.15)">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6" rx="1"/></svg>
+      </div>
+      <div class="flex-1 min-w-0">
+        <p class="text-white text-xs font-semibold leading-snug truncate">${item.name}</p>
+        <p class="text-green-400 text-sm font-bold mt-0.5">$${(item.price * item.qty).toFixed(2)}</p>
+        <div class="flex items-center gap-2 mt-2">
+          <button onclick="changeQty('${item.name}',-1)" class="w-6 h-6 rounded-md flex items-center justify-center text-slate-400 hover:text-white hover:bg-slate-700 transition-colors text-sm font-bold" aria-label="Decrease">−</button>
+          <span class="text-white text-sm font-semibold w-5 text-center">${item.qty}</span>
+          <button onclick="changeQty('${item.name}',1)" class="w-6 h-6 rounded-md flex items-center justify-center text-slate-400 hover:text-white hover:bg-slate-700 transition-colors text-sm font-bold" aria-label="Increase">+</button>
+        </div>
+      </div>
+      <button onclick="removeItem('${item.name}')" class="text-slate-600 hover:text-red-400 transition-colors p-1 shrink-0" aria-label="Remove">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+      </button>
+    </div>
+  `).join('');
+
+  document.getElementById('cart-subtotal').textContent = `$${subtotal.toFixed(2)}`;
+  document.getElementById('cart-total').textContent    = `$${subtotal.toFixed(2)}`;
+}
+
+/* ─── BADGE ─── */
+function updateBadge() {
+  const total = cart.reduce((a, i) => a + i.qty, 0);
+  const badge = document.getElementById('cart-badge');
+  badge.textContent = total;
+  badge.classList.add('scale-125');
+  setTimeout(() => badge.classList.remove('scale-125'), 200);
+}
+
+/* ─── CHECKOUT ─── */
+function goCheckout() {
+  saveCart();
+  window.open('checkout.html', '_blank');
+}
+
+/* ─── TOAST ─── */
+let toastTimer = null;
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  document.getElementById('toast-msg').textContent = msg;
+  toast.style.transform = 'translateY(0)';
+  toast.style.opacity   = '1';
+  if (toastTimer) clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => {
+    toast.style.transform = 'translateY(5rem)';
+    toast.style.opacity   = '0';
+  }, 3000);
+}
+
+/* ─── FILTER ─── */
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const filter = btn.dataset.filter;
+    document.querySelectorAll('.filter-btn').forEach(b => {
+      b.classList.remove('bg-g-500/20','border-g-500/50','text-g-400','active');
+      b.classList.add('bg-slate-900','border-slate-700','text-slate-400');
+    });
+    btn.classList.add('bg-g-500/20','border-g-500/50','text-g-400','active');
+    btn.classList.remove('bg-slate-900','border-slate-700','text-slate-400');
+    document.querySelectorAll('#product-grid article').forEach(card => {
+      card.style.display = (filter === 'all' || card.dataset.category === filter) ? '' : 'none';
+    });
+  });
+});
+
+/* ─── FAQ ─── */
+document.querySelectorAll('.faq-trigger').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item    = btn.parentElement;
+    const content = item.querySelector('.faq-content');
+    const isOpen  = item.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.faq-item').forEach(i => {
+      i.classList.remove('open');
+      i.querySelector('.faq-content').classList.remove('open');
+      i.style.borderColor = '';
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      content.classList.add('open');
+      item.style.borderColor = 'rgba(34,197,94,.3)';
+    }
+  });
+});
+
+/* ─── CONTACT FORM ─── */
+function submitForm(e) {
+  e.preventDefault();
+  const btn = document.getElementById('btn-send-form');
+  btn.disabled = true;
+  btn.innerHTML = `<svg class="animate-spin w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"/></svg> Sending…`;
+  setTimeout(() => {
+    document.getElementById('contact-form').reset();
+    btn.disabled = false;
+    btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg> Send Message`;
+    document.getElementById('form-success').classList.remove('hidden');
+    setTimeout(() => document.getElementById('form-success').classList.add('hidden'), 5000);
+  }, 1500);
+}
+
+/* ─── INIT ─── */
+updateBadge();
+</script>
+</body>
+</html>
